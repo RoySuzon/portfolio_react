@@ -123,7 +123,9 @@ const profile = {
                 Learn More <i className="fas fa-arrow-right"></i>
               </a>
               <a
-                href="#"
+                href="https://drive.google.com/file/d/10EUZ34hiWil5yfeIaNFLHO31-VF8rQ5t/view"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group relative inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gray-900 border border-gray-700/50 text-gray-300 font-medium hover:text-white hover:scale-105 transition-all duration-300"
               >
                 Get Resume <i className="fas fa-envelope"></i>
