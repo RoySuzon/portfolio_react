@@ -200,4 +200,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ---
 
-<div align="center"> Made with ❤️ by Goutom Roy </div>
+<div align="center"> Made with ❤️ by Nazmul Hossain </div>
