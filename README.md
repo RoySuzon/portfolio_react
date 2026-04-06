@@ -24,7 +24,7 @@ Welcome to my **portfolio website**! This site showcases my skills, experience, 
 ## Live Preview
 
 Check out the live preview of the portfolio website here:  
-[**Live Demo**](https://portfolio-react-7rvgi1407-roysuzons-projects.vercel.app/)
+[**Live Demo**](https://suzon.bro.bd)
 
 ---
 
