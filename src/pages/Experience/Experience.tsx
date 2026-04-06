@@ -1,5 +1,4 @@
-import React from "react";
-import { Code2, Activity, Cpu, Layers, Network, Binary } from "lucide-react";
+import { Award, Code2, Smartphone } from "lucide-react";
 
 const ExperienceCard = ({
   title,
@@ -52,30 +51,31 @@ const ExperienceCard = ({
 );
 
 const ExperienceSection = () => {
+
   const experiences = [
     {
-      icon: Network,
-      title: "WordPress Developer",
-      company: "Fiverr",
-      period: "2019 - 2020",
+      icon: Award,
+      title: "Web Development Trainee",
+      company: "Europial IT Solutions",
+      period: "Aug 2019 - Dec 2019",
       description:
-        "Worked on developing and customizing WordPress websites for clients globally.",
-    },
-    {
-      icon: Layers,
-      title: "Junior Frontend Developer",
-      company: "Sera Programmer",
-      period: "2021 - 2023",
-      description:
-        "Assisted in building and optimizing user interfaces with a focus on responsive and interactive designs.",
+        "🚀 Completed an intensive training program in modern web development. Gained hands-on experience in HTML, CSS, JavaScript, and responsive design. Learned best practices for web architecture and development workflows.",
     },
     {
       icon: Code2,
-      title: "JavaScript Developer",
-      company: "OlovJS (Sera Programmer)",
-      period: "2023 - Present",
+      title: "Associate Programmer",
+      company: "eAppiar Ltd.",
+      period: "Dec 2023 - Nov 2024",
       description:
-        "Contributed to developing JavaScript libraries and enhancing framework functionalities.",
+        "💻 Developed and maintained cross-platform mobile apps using Flutter & Dart, including Hypos, Muslim Vision, and Marico Audit. Integrated APIs, enhanced UI/UX, optimized app performance, and resolved critical bugs, increasing app stability by 30%.",
+    },
+    {
+      icon: Smartphone,
+      title: "Mobile App Developer",
+      company: "Symphony Softtech Ltd.",
+      period: "Dec 2024 - Present",
+      description:
+        "📱 Building scalable and high-performance mobile applications with Flutter. Leading UI development, API integration, and smooth cross-platform performance. Collaborate with product and design teams to deliver production-ready features efficiently.",
     },
   ];
 

@@ -1,7 +1,12 @@
 "use client";
-import { useEffect, useMemo, useState } from "react";
 import { useTheme } from "next-themes";
+import { useEffect, useMemo, useState } from "react";
 import { Cloud, fetchSimpleIcons, renderSimpleIcon } from "react-icon-cloud";
+
+type IconCloudProps = {
+  iconSlugs?: string[];
+  imageArray?: string[];
+};
 
 export const cloudProps = {
   containerProps: {
@@ -28,9 +33,9 @@ export const cloudProps = {
     minSpeed: 0.02,
     // dragControl: false,
   },
-};
+} as const;
 
-export const renderCustomIcon = (icon, theme, imageArray) => {
+export const renderCustomIcon = (icon: unknown, theme: string, _imageArray?: string[]) => {
   const bgHex = theme === "light" ? "#f3f2ef" : "#080510";
   const fallbackHex = theme === "light" ? "#6e6e73" : "#ffffff";
   const minContrastRatio = theme === "dark" ? 2 : 1.2;
@@ -55,8 +60,8 @@ export default function IconCloud({
   iconSlugs = [],
 
   imageArray,
-}) {
-  const [data, setData] = useState(null);
+}: IconCloudProps) {
+  const [data, setData] = useState<{ simpleIcons: Record<string, unknown> } | null>(null);
   const { theme } = useTheme();
 
   useEffect(() => {
@@ -70,9 +75,9 @@ export default function IconCloud({
     if (!data) return null;
 
     return Object.values(data.simpleIcons).map((icon) =>
-      renderCustomIcon(icon, theme || "dark")
+      renderCustomIcon(icon, theme || "dark", imageArray)
     );
-  }, [data, theme]);
+  }, [data, theme, imageArray]);
 
   return (
     // @ts-ignore

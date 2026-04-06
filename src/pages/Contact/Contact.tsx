@@ -1,19 +1,28 @@
-import React, { useState } from "react";
-import { Send, Phone, MapPin, Mail } from "lucide-react";
+import { Mail, MapPin, Send } from "lucide-react";
+import { type FormEvent, useState } from "react";
+
+type ContactForm = {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+};
+
+type ContactErrors = Partial<Record<keyof ContactForm, string>>;
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<ContactForm>({
     name: "",
     email: "",
     subject: "",
     message: "",
   });
 
-  const [errors, setErrors] = useState({});
-  const [status, setStatus] = useState(null);
+  const [errors, setErrors] = useState<ContactErrors>({});
+  const [status, setStatus] = useState<string | null>(null);
 
   const validateForm = () => {
-    let tempErrors = {};
+    let tempErrors: ContactErrors = {};
     let isValid = true;
 
     if (!formData.name.trim()) {
@@ -43,7 +52,7 @@ export default function Contact() {
     return isValid;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!validateForm()) {
@@ -53,7 +62,7 @@ export default function Contact() {
 
     // Create a new FormData object to send to Web3Forms API
     const form = new FormData();
-    form.append("access_key", "90f4b8af-e590-42b0-beaf-10b18f66a703"); // Replace with your Web3Forms access key
+    form.append("access_key", "7d4d123b-cced-493b-a143-89fb31474eda"); // Replace with your Web3Forms access key
     form.append("name", formData.name);
     form.append("email", formData.email);
     form.append("subject", formData.subject || "New Contact Form Submission");
@@ -66,7 +75,7 @@ export default function Contact() {
         body: form,
       });
 
-      const result = await response.json();
+      const result = (await response.json()) as { message?: string };
 
       if (response.ok) {
         setStatus("Message sent successfully!");
@@ -112,7 +121,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold">Email</h3>
-                    <p className="text-gray-400">olovajs@gmail.com</p>
+                    <p className="text-gray-400">goutomroy770@gmail.com</p>
                   </div>
                 </div>
 
@@ -122,7 +131,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold">Location</h3>
-                    <p className="text-gray-400">Laxmipure, Natore 6400</p>
+                    <p className="text-gray-400">Debiganj, Panchagarh (5020)</p>
                   </div>
                 </div>
               </div>
@@ -136,9 +145,8 @@ export default function Contact() {
                     <input
                       type="text"
                       placeholder="Your Name"
-                      className={`w-full px-4 py-3 rounded-lg bg-white/5 border ${
-                        errors.name ? "border-red-500" : "border-gray-700"
-                      } focus:border-blue-500 focus:outline-none transition-colors`}
+                      className={`w-full px-4 py-3 rounded-lg bg-white/5 border ${errors.name ? "border-red-500" : "border-gray-700"
+                        } focus:border-blue-500 focus:outline-none transition-colors`}
                       value={formData.name}
                       onChange={(e) =>
                         setFormData({ ...formData, name: e.target.value })
@@ -153,9 +161,8 @@ export default function Contact() {
                     <input
                       type="email"
                       placeholder="Your Email"
-                      className={`w-full px-4 py-3 rounded-lg bg-white/5 border ${
-                        errors.email ? "border-red-500" : "border-gray-700"
-                      } focus:border-blue-500 focus:outline-none transition-colors`}
+                      className={`w-full px-4 py-3 rounded-lg bg-white/5 border ${errors.email ? "border-red-500" : "border-gray-700"
+                        } focus:border-blue-500 focus:outline-none transition-colors`}
                       value={formData.email}
                       onChange={(e) =>
                         setFormData({ ...formData, email: e.target.value })
@@ -172,9 +179,8 @@ export default function Contact() {
                     <input
                       type="text"
                       placeholder="Subject"
-                      className={`w-full px-4 py-3 rounded-lg bg-white/5 border ${
-                        errors.subject ? "border-red-500" : "border-gray-700"
-                      } focus:border-blue-500 focus:outline-none transition-colors`}
+                      className={`w-full px-4 py-3 rounded-lg bg-white/5 border ${errors.subject ? "border-red-500" : "border-gray-700"
+                        } focus:border-blue-500 focus:outline-none transition-colors`}
                       value={formData.subject}
                       onChange={(e) =>
                         setFormData({ ...formData, subject: e.target.value })
@@ -190,10 +196,9 @@ export default function Contact() {
                   <div>
                     <textarea
                       placeholder="Your Message"
-                      rows="4"
-                      className={`w-full px-4 py-3 rounded-lg bg-white/5 border ${
-                        errors.message ? "border-red-500" : "border-gray-700"
-                      } focus:border-blue-500 focus:outline-none transition-colors resize-none`}
+                      rows={4}
+                      className={`w-full px-4 py-3 rounded-lg bg-white/5 border ${errors.message ? "border-red-500" : "border-gray-700"
+                        } focus:border-blue-500 focus:outline-none transition-colors resize-none`}
                       value={formData.message}
                       onChange={(e) =>
                         setFormData({ ...formData, message: e.target.value })
@@ -219,11 +224,10 @@ export default function Contact() {
               {/* Status Message */}
               {status && (
                 <div
-                  className={`mt-4 text-center ${
-                    status.includes("success")
-                      ? "text-green-400"
-                      : "text-red-400"
-                  }`}
+                  className={`mt-4 text-center ${status.includes("success")
+                    ? "text-green-400"
+                    : "text-red-400"
+                    }`}
                 >
                   <p>{status}</p>
                 </div>

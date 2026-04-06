@@ -1,49 +1,47 @@
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ReactLenis } from "lenis/react";
-import { useTransform, motion, useScroll } from "framer-motion";
-import { useRef, useEffect } from "react";
 import PropTypes from "prop-types";
+import { useEffect, useRef } from "react";
 
 const projects = [
   {
-    title: "Olova! A Lightweight JavaScript Library",
+    title: "Daily Expense Tracker",
     description:
-      "A lightweight JavaScript library for creating beautiful, responsive UI components.",
-    src: "rock.jpg",
-    link: "https://i.postimg.cc/DwgWTfP0/Annotation-2025-03-19-113338.png",
+      "A Flutter-based mobile app for tracking daily expenses, calculating totals, and generating PDF reports. Supports offline storage with Drift/SQLite and online sync.",
+    src: "daily_expense.jpg", // Replace with your image path
+    link: "https://i.postimg.cc/4xzn13th/Ig1SIu-Eq-H-50.webp", // Replace if needed
     color: "#5196fd",
-    githubLink: "https://github.com/olovajs/olova",
-    liveLink: "https://olova.js.org/",
+    githubLink: "#", // Your repo
+    liveLink: "https://daily-expense-web.vercel.app/", // App store link or live demo if any
   },
+
+  ///Exam System
   {
-    title: "A sleek portfolio built with React and Tailwind CSS ",
-    description:
-      "A sleek portfolio built with React and Tailwind CSS to showcase your skills, projects, and experience in a modern design.",
-    src: "tree.jpg",
-    link: "https://i.postimg.cc/J75CKyrs/Annotation-2025-04-01-203959.png",
-    color: "#8f89ff",
-    githubLink: "https://github.com/seraprogrammer/portfolio",
-    liveLink: "https://codervai.vercel.app",
+    title: "Exam Management System",
+    description: "Flutter app for managing exams with features like question banks, scheduling, and result tracking. Backend built with Node.js, Express, and MongoDB.",
+    link: "https://i.postimg.cc/Kj57Hy1L/d-KZZw-Uo-K-50.webp",
+    color: "#6f42c1",
+    githubLink: "#"
   },
+
+  //Distributor Management System (DMS)
   {
-    title: "🚀 CodeWhisperer",
-    description:
-      "🚀 CodeWhisperer A powerful online code editor built with React and Tailwind CSS. Featuring real-time code execution, syntax highlighting, multi-language support, and a sleek UI. Start coding instantly! 💻✨",
-    src: "water.jpg",
-    link: "https://i.postimg.cc/J4jPVFY0/Annotation-2025-04-01-204723.png",
-    color: "#fff",
-    githubLink: "https://github.com/seraprogrammer/codewhisperer",
-    liveLink: "https://codewhisperer.vercel.app/",
+    title: "Distributor Management System (DMS)",
+    description: "Flutter app for managing distributors, orders, and inventory",
+    link: "https://i.postimg.cc/hGqLcjV0/6M8HPc4j-P-50.webp",
+    color: "#e83e8c",
+    githubLink: "#"
   },
+
+  //School Management System
   {
-    title: "CodeKori 🔥",
-    description:
-      "CodeKori is a powerful online code editor built with React and Tailwind CSS. Featuring real-time code execution, syntax highlighting, multi-language support, and a sleek UI. Start coding instantly! 💻✨",
-    src: "house.jpg",
-    link: "https://i.postimg.cc/cHQr4fpR/Annotation-2025-04-01-205350.png",
-    color: "#ed649e",
-    githubLink: "https://github.com/seraprogrammer/CodeKori",
-    liveLink: "https://codekori.js.org",
-  },
+    title: "School Management System",
+    description: "Flutter app for managing school operations, including student records, attendance, and communication. Backend built with Node.js and PostgreSQL.",
+    link: "https://i.postimg.cc/vBhk5CQR/y98Z08cvs-50.webp",
+    color: "#fd7e14",
+    githubLink: "#"
+  }
+
 ];
 
 export default function Projects() {

@@ -1,38 +1,42 @@
-import React, { useState } from "react";
-import EducationLoader from "@/components/ui/EducationLoader";
-import {
-  Star,
-  Award,
-  Calendar,
-  BookOpen,
-  GraduationCap,
-  Trophy,
-} from "lucide-react";
 import { motion } from "framer-motion";
+import {
+  Award,
+  BookOpen,
+  Calendar,
+  Trophy
+} from "lucide-react";
+import { useState } from "react";
 
 const EducationSection = () => {
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const educationData = [
     {
       degree: "Secondary School Certificate (SSC)",
-      school: "Natore Textile Institute",
-      mascot: "📘",
-      year: "2019-2021",
-      achievements: ["GPA: 4.89", "Subject: Science"],
-      skills: ["Mathematics", "Physics", "Chemistry", "Biology"],
-      description:
-        "Focused on core science subjects with emphasis on practical laboratory work and scientific research methodologies.",
+      school: "Nripendra Narayan Govt. High School",
+      mascot: "🏫",
+      year: "2010-2015",
+      achievements: ["GPA: 4.68", "Concentration: Science"],
+      skills: ["Mathematics", "Physics", "Chemistry", "Computer Basics"],
+      description: "Completed secondary education with excellent grades in Science stream.",
     },
     {
-      degree: "Higher Secondary Certificate (HSC)",
-      school: "Dottopara Model Degree College",
-      mascot: "📗",
-      year: "2021-2023",
-      achievements: ["GPA: 4.25", "Subject: Arts"],
-      skills: ["Literature", "Social Studies", "Economics", "History"],
-      description:
-        "Developed strong analytical and critical thinking skills through comprehensive study of humanities and social sciences.",
+      degree: "Diploma in Computer",
+      school: "Thakurgaon Polytechnic Institute",
+      mascot: "💻",
+      year: "2016-2019",
+      achievements: ["Successfully completed core programming courses", "Hands-on projects in networking and database management"],
+      skills: ["C Programming", "Networking", "Database Management", "Basic Web Development"],
+      description: "Focused on foundational computer science topics and practical IT skills.",
+    },
+    {
+      degree: "B.Sc in Computer Science & Engineering (CSE)",
+      school: "Daffodil International University",
+      mascot: "🎓",
+      year: "2020-2023",
+      achievements: ["Completed B.Sc in CSE with strong foundation in software development and algorithms"],
+      skills: ["Flutter", "Dart", "Firebase", "Web Development", "Database Design", "Problem Solving"],
+      description: "Graduated with a focus on modern software development, mobile apps, and clean coding practices.",
     },
   ];
 
@@ -53,7 +57,7 @@ const EducationSection = () => {
       opacity: 1,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
+        ease: "easeOut" as const,
       },
     },
   };
@@ -93,11 +97,10 @@ const EducationSection = () => {
             <motion.div
               key={index}
               variants={cardVariants}
-              className={`relative border rounded-xl p-8 transition-all duration-300 bg-gray-900/50 backdrop-blur-sm ${
-                hoveredIndex === index
-                  ? "border-teal-500 scale-[1.02]"
-                  : "border-blue-400/20"
-              }`}
+              className={`relative border rounded-xl p-8 transition-all duration-300 bg-gray-900/50 backdrop-blur-sm ${hoveredIndex === index
+                ? "border-teal-500 scale-[1.02]"
+                : "border-blue-400/20"
+                }`}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >

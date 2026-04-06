@@ -1,8 +1,28 @@
-"use client";;
-import { useEffect, useState } from "react";
+"use client";
 import { motion } from "framer-motion";
+import { type CSSProperties, type HTMLAttributes, useEffect, useState } from "react";
 
 import { cn } from "@/lib/utils";
+
+type SparklesTextProps = HTMLAttributes<HTMLDivElement> & {
+  text: string;
+  colors?: {
+    first: string;
+    second: string;
+  };
+  className?: string;
+  sparklesCount?: number;
+};
+
+type SparkleShape = {
+  id: string;
+  x: string;
+  y: string;
+  color: string;
+  delay: number;
+  scale: number;
+  lifespan: number;
+};
 
 const SparklesText = ({
   text,
@@ -10,8 +30,8 @@ const SparklesText = ({
   className,
   sparklesCount = 10,
   ...props
-}) => {
-  const [sparkles, setSparkles] = useState([]);
+}: SparklesTextProps) => {
+  const [sparkles, setSparkles] = useState<SparkleShape[]>([]);
 
   useEffect(() => {
     const generateStar = () => {
@@ -51,12 +71,10 @@ const SparklesText = ({
     (<div
       className={cn("text-6xl font-bold", className)}
       {...props}
-      style={
-        {
-          "--sparkles-first-color": `${colors.first}`,
-          "--sparkles-second-color": `${colors.second}`
-        }
-      }>
+      style={{
+        "--sparkles-first-color": `${colors.first}`,
+        "--sparkles-second-color": `${colors.second}`,
+      } as CSSProperties}>
       <span className="relative inline-block">
         {sparkles.map((sparkle) => (
           <Sparkle key={sparkle.id} {...sparkle} />
@@ -67,7 +85,7 @@ const SparklesText = ({
   );
 };
 
-const Sparkle = ({ id, x, y, color, delay, scale }) => {
+const Sparkle = ({ id, x, y, color, delay, scale }: SparkleShape) => {
   return (
     (<motion.svg
       key={id}
